@@ -1,0 +1,38 @@
+package User;
+
+import java.util.ArrayList;
+
+public class Jogador {
+    private String nome;
+    private String login;
+    private String senha;
+    private int saldo;
+    private ArrayList<Aposta> hitorico;
+
+    Jogador(){}
+    Jogador(String nome,String login,String senha){
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        hitorico = new ArrayList<>();
+    }
+
+    public String getNome() {return nome;}
+    public void setNome(String nome) {this.nome = nome;}
+
+    public String getLogin() {return login;}
+    public void setLogin(String login) {this.login = login;}
+
+    public String getSenha() {return senha;}
+    public void setSenha(String senha) {this.senha = senha;}
+
+    public int getSaldo() {return saldo;}
+    public void setSaldo(int saldo) {this.saldo = saldo;}
+
+
+    public String toString(){
+        return "Jogador: " + nome +
+                "\nLogin: " + login +
+                "\nSaldo: " + saldo;
+    }
+}
