@@ -1,8 +1,9 @@
 package Jogo;
-
+import User.Jogador;
 import java.util.Random;
 
 public class CacaNiquel extends Jogo{
+    Jogador jogador;
     protected int sortear(){
         Random random = new Random();
         return random.nextInt(9) + 1;
@@ -15,7 +16,8 @@ public class CacaNiquel extends Jogo{
         return false;
    }
 
-   public void jogar() {
+   public void jogar(double valor, Jogador jogador) {
+        double saldo = jogador.getSaldo();
         int n1,n2,n3;
         n1 = sortear();
         n2 = sortear();
