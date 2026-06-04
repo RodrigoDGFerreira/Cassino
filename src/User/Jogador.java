@@ -9,8 +9,8 @@ public class Jogador {
     private int saldo;
     private ArrayList<Aposta> hitorico;
 
-    Jogador(){}
-    Jogador(String nome,String login,String senha){
+    public Jogador(){}
+    public Jogador(String nome,String login,String senha){
         this.nome = nome;
         this.login = login;
         this.senha = senha;
@@ -28,6 +28,16 @@ public class Jogador {
 
     public int getSaldo() {return saldo;}
     public void setSaldo(int saldo) {this.saldo = saldo;}
+
+    public boolean verificarAposta(int valor){
+        return valor<=saldo;
+    }
+    public void adicionarSaldo(int valor){
+        saldo +=valor;
+    }
+    public void removerSaldo(int valor){
+        saldo -=valor;
+    }
 
 
     public String toString(){

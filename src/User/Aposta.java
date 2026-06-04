@@ -9,4 +9,7 @@ public class Aposta {
     private String resultado;
     private LocalDateTime data;
     private Jogo tipoJogo;
+    private Jogador jogador;
+
+
 }
