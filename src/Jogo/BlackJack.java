@@ -14,12 +14,6 @@ public class BlackJack extends Jogo{
         carta = r.nextInt(10)+1;
         return carta;
     }
-    private boolean vericarMaoDealer(){
-        if (maoDealer<=16){
-            return true;
-        }
-        return false;
-    }
     private void menu(){
         System.out.println("1 - Puxar carta\n" +
                 "0 - Parar");
@@ -27,13 +21,28 @@ public class BlackJack extends Jogo{
     private void mostrarMao(){
         System.out.println("Mão Jogador: "+ + maoJogador+ "\nMão Dealer: " + maoDealer);
     }
-    public void verificar(){
-        if(maoJogador ==21&& maoDealer ==21){
-            System.out.println("Empate");
-        } else if (maoDealer <= 21 && maoJogador>21) {
-            System.out.println("Dealer Ganhou!!!");
-        }else if(maoJogador ==21 && (maoDealer>21 || maoDealer<21)){
-            System.out.println("Jogador Ganhou");
+    private void verificarResultado(int valor, Jogador jogador) {
+
+        if (maoJogador > 21) {
+            System.out.println("Você estourou! Dealer venceu.\n");
+        }
+        else if (maoDealer > 21) {
+            System.out.println("Dealer estourou! Jogador venceu.\n");
+            System.out.println(jogador.getNome() + " ganhou: " + (valor*2));
+            jogador.adicionarSaldo(valor * 2);
+        }
+        else if (maoJogador > maoDealer) {
+            System.out.println("Jogador venceu.\n");
+            System.out.println(jogador.getNome() + " ganhou: " + (valor*2));
+            jogador.adicionarSaldo(valor * 2);
+        }
+        else if (maoDealer > maoJogador) {
+            System.out.println("Dealer venceu.\n");
+        }
+        else {
+            System.out.println("Empate. Aposta devolvida.\n");
+
+            jogador.adicionarSaldo(valor);
         }
     }
 
@@ -42,22 +51,25 @@ public class BlackJack extends Jogo{
             return;
         }
         Scanner sc =  new Scanner(System.in);
-        maoDealer = puxarCarta()*2;
-        maoJogador = puxarCarta()*2;
-        int puxar=0;
+        maoDealer = puxarCarta()+ puxarCarta();
+        maoJogador = puxarCarta()+ puxarCarta();
+        int puxar=1;
         mostrarMao();
-        while (puxar!=0){
+        while (puxar!=0 && maoJogador<=21){
             menu();
             puxar = sc.nextInt();
             if(puxar==1){
                 maoJogador +=puxarCarta();
-            }
-            if(vericarMaoDealer()){
-                maoDealer +=puxarCarta();
+
             }
             mostrarMao();
         }
-
+        while(maoDealer<16 && maoJogador<=21){
+            maoDealer += puxarCarta();
+        }
+        System.out.println("==== Resultado Final ====");
+        mostrarMao();
+        verificarResultado(valor, jogador);
 
 
 

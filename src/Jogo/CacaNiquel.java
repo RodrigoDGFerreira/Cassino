@@ -25,11 +25,11 @@ public class CacaNiquel extends Jogo{
 
         if(verificarJogada(n1,n2,n3)){
                 System.out.println(" | " +n1 + " | " + n2 + " | " + n3 + " | ");
-                System.out.println("Parabéns você Ganhou!!");
-                jogador.adicionarSaldo(valor*2);
+                System.out.println("Parabéns " + jogador.getNome() + " Ganhou!!! " + (valor*2));
+                jogador.adicionarSaldo(valor*5);
         }else{
                 System.out.println(" | " +n1 + " | " + n2 + " | " + n3 + " | ");
-                System.out.println("Você perdeu");
+                System.out.println(jogador.getNome() +" perdeu");
 
             }
         }
