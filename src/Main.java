@@ -1,12 +1,12 @@
-import Jogo.CacaNiquel;
-import Jogo.Jogo;
+import Jogo.*;
 import User.Jogador;
+
 
 void main() {
     Jogador j =  new Jogador();
-    Jogo cacaNiquel = new CacaNiquel();
+    Jogo cacaNiquel = new BlackJack();
     j.setSaldo(200);
-    cacaNiquel.jogar(300,j);
-    System.out.println(j.getSaldo());
+    cacaNiquel.jogar(100,j);
+
 
 }

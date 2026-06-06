@@ -9,16 +9,15 @@ public class CacaNiquel extends Jogo{
         Random random = new Random();
         return random.nextInt(7) + 1;
    }
-   Jogador j = new Jogador();
 
    private boolean verificarJogada(int n1, int n2, int n3){
        return n1 == n2 && n1 == n3;
    }
 
    public void jogar(int valor, Jogador jogador) {
-        if(verificarSaldo(valor, jogador)){
-            return;
-        }
+       if(!verificarSaldo(valor, jogador)){
+           return;
+       }
         int n1,n2,n3;
         n1 = sortear();
         n2 = sortear();
