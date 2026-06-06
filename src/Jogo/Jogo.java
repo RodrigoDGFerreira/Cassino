@@ -3,8 +3,12 @@ import User.Jogador;
 public abstract class Jogo {
     protected String jogo;
 
-    public void verificarSaldo(int valor,Jogador jogador){
-
+    protected boolean verificarSaldo(int valor,Jogador jogador){
+        if(!jogador.verificarAposta(valor)){
+            System.out.println("saldo insuficiente");
+            return false;
+        }
+        return true;
     }
 
 

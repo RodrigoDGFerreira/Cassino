@@ -16,7 +16,7 @@ public class CacaNiquel extends Jogo{
    }
 
    public void jogar(int valor, Jogador jogador) {
-        jogador.verificarAposta(valor);
+        verificarSaldo(valor, jogador);
         int n1,n2,n3;
         n1 = sortear();
         n2 = sortear();

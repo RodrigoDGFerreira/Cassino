@@ -30,13 +30,10 @@ public class Jogador {
     public void setSaldo(double saldo) {this.saldo = saldo;}
 
     public boolean verificarAposta(int valor){
-        return valor>=saldo;
+        return valor<=saldo;
     }
     public void verificarSaldo(int valor){
-        if(!verificarAposta(valor)){
-            System.out.println("saldo insuficiente");
-            return;
-        }
+
     }
     public void adicionarSaldo(int valor){
         saldo +=valor;
