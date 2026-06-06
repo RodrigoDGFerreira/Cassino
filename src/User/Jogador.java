@@ -6,7 +6,7 @@ public class Jogador {
     private String nome;
     private String login;
     private String senha;
-    private double saldo;
+    private int saldo;
     private ArrayList<Aposta> hitorico;
 
     public Jogador(){}
@@ -26,8 +26,8 @@ public class Jogador {
     public String getSenha() {return senha;}
     public void setSenha(String senha) {this.senha = senha;}
 
-    public double getSaldo() {return saldo;}
-    public void setSaldo(double saldo) {this.saldo = saldo;}
+    public int getSaldo() {return saldo;}
+    public void setSaldo(int saldo) {this.saldo = saldo;}
 
     public boolean verificarAposta(int valor){
         return valor<=saldo;

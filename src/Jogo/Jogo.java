@@ -8,8 +8,10 @@ public abstract class Jogo {
             System.out.println("saldo insuficiente");
             return false;
         }
+        jogador.removerSaldo(valor);
         return true;
     }
+
 
 
     public abstract void jogar(int valor, Jogador jogador);

@@ -16,7 +16,9 @@ public class CacaNiquel extends Jogo{
    }
 
    public void jogar(int valor, Jogador jogador) {
-        verificarSaldo(valor, jogador);
+        if(verificarSaldo(valor, jogador)){
+            return;
+        }
         int n1,n2,n3;
         n1 = sortear();
         n2 = sortear();
@@ -25,11 +27,11 @@ public class CacaNiquel extends Jogo{
         if(verificarJogada(n1,n2,n3)){
                 System.out.println(" | " +n1 + " | " + n2 + " | " + n3 + " | ");
                 System.out.println("Parabéns você Ganhou!!");
-                jogador.adicionarSaldo(valor);
+                jogador.adicionarSaldo(valor*2);
         }else{
                 System.out.println(" | " +n1 + " | " + n2 + " | " + n3 + " | ");
                 System.out.println("Você perdeu");
-                jogador.removerSaldo(valor);
+
             }
         }
 
