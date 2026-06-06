@@ -19,7 +19,7 @@ public class BlackJack extends Jogo{
                 "0 - Parar");
     }
     private void mostrarMao(){
-        System.out.println("Mão Jogador: "+ + maoJogador+ "\nMão Dealer: " + maoDealer);
+        System.out.println("Mão Jogador: " + maoJogador + "\nMão Dealer: " + maoDealer);
     }
     private void verificarResultado(int valor, Jogador jogador) {
 
@@ -71,8 +71,5 @@ public class BlackJack extends Jogo{
         mostrarMao();
         verificarResultado(valor, jogador);
 
-
-
-        sc.close();
     }
 }
