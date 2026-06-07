@@ -5,8 +5,18 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class BlackJack extends Jogo{
+    private String nome = "BlackJack";
     private int maoDealer =0;
     private int maoJogador =0;
+
+    public String getNome() {return nome;}
+    public void setNome(String nome) {this.nome = nome;}
+    public int getMaoDealer() {return maoDealer;}
+    public void setMaoDealer(int maoDealer) {this.maoDealer = maoDealer;}
+    public int getMaoJogador() {return maoJogador;}
+    public void setMaoJogador(int maoJogador) {this.maoJogador = maoJogador;}
+
+
 
     private int puxarCarta(){
         int carta;
@@ -71,5 +81,12 @@ public class BlackJack extends Jogo{
         mostrarMao();
         verificarResultado(valor, jogador);
 
+    }
+    public String toString() {
+        return "BlackJack{" +
+                "nome='" + nome + '\'' +
+                ", maoDealer=" + maoDealer +
+                ", maoJogador=" + maoJogador +
+                '}';
     }
 }

@@ -6,6 +6,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Roleta extends Jogo{
+    private String nome = "Roleta";
+
+    public String getNome() {return nome;}
+    public void setNome(String nome) {this.nome = nome;}
 
     protected int sortear(){
         Random r = new Random();
@@ -59,5 +63,10 @@ public class Roleta extends Jogo{
         int resultado = verificar(numeroSorteado);
 
         verificarAposta(opcao, resultado, valor, jogador, numeroSorteado);
+    }
+    public String toString() {
+        return "Roleta{" +
+                "nome='" + nome + '\'' +
+                '}';
     }
 }
