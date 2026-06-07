@@ -50,7 +50,11 @@ public class Roleta extends Jogo{
 
         menu();
         int opcao = sc.nextInt();
-
+        if(opcao < 0 || opcao > 2){
+            System.out.println("Opção inválida.");
+            jogador.adicionarSaldo(valor);
+            return;
+        }
         int numeroSorteado = sortear();
         int resultado = verificar(numeroSorteado);
 
