@@ -1,14 +1,9 @@
+import Cassino.Cassino;
 import Jogo.*;
 import User.Jogador;
 
-
 void main() {
-    Jogador j =  new Jogador();
-    Jogo cacaNiquel = new Roleta();
-    j.setSaldo(200);
-    j.setNome("Rodrigo");
-    cacaNiquel.jogar(100,j);
-    System.out.println(j.getSaldo());
-
-
+    Cassino cassino = new Cassino();
+    cassino.iniciar();
 }
+
