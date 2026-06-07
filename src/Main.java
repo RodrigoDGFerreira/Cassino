@@ -4,7 +4,7 @@ import User.Jogador;
 
 void main() {
     Jogador j =  new Jogador();
-    Jogo cacaNiquel = new CacaNiquel();
+    Jogo cacaNiquel = new Roleta();
     j.setSaldo(200);
     j.setNome("Rodrigo");
     cacaNiquel.jogar(100,j);
