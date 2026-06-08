@@ -42,15 +42,15 @@ public class BlackJack extends Jogo{
         else if (maoDealer > 21) {
             System.out.println("Dealer estourou! Jogador venceu.\n");
             System.out.println(jogador.getNome() + " ganhou: " + (valor*2));
-            Aposta aposta = new Aposta(valor,"Venceu",this,jogador);
             jogador.adicionarSaldo(valor * 2);
+            Aposta aposta = new Aposta(valor,"Venceu",this,jogador);
             jogador.adicionarAposta(aposta);
         }
         else if (maoJogador > maoDealer) {
             System.out.println("Jogador venceu.\n");
             System.out.println(jogador.getNome() + " ganhou: " + (valor*2));
-            Aposta aposta = new Aposta(valor,"Venceu",this,jogador);
             jogador.adicionarSaldo(valor * 2);
+            Aposta aposta = new Aposta(valor,"Venceu",this,jogador);
             jogador.adicionarAposta(aposta);
         }
         else if (maoDealer > maoJogador) {

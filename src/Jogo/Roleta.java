@@ -26,13 +26,13 @@ public class Roleta extends Jogo{
         if(opcao == resultado){
             if(resultado == 0){
                 System.out.println("O jogador ganhou: " + valor * 10);
-                Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
                 jogador.adicionarSaldo(valor * 10);
+                Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
                 jogador.adicionarAposta(aposta);
             } else {
                 System.out.println("O jogador ganhou: " + valor * 2);
-                Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
                 jogador.adicionarSaldo(valor * 2);
+                Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
                 jogador.adicionarAposta(aposta);
             }
         } else {
@@ -63,6 +63,8 @@ public class Roleta extends Jogo{
         if(opcao < 0 || opcao > 2){
             System.out.println("Opção inválida.");
             jogador.adicionarSaldo(valor);
+            Aposta aposta = new Aposta(valor,"Invalidada",this,jogador);
+            jogador.adicionarAposta(aposta);
             return;
         }
         int numeroSorteado = sortear();
