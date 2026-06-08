@@ -1,7 +1,7 @@
 package Cassino;
 import User.*;
 import Jogo.*;
-
+import java.util.InputMismatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,15 +15,28 @@ public class Cassino {
         this.sistemaLogin = new SistemaLogin();
         this.scanner = new Scanner(System.in);
     }
+    private int lerInteiro(String mensagem) {
+        int numero;
+
+        while (true) {
+            try {
+                System.out.println(mensagem);
+                numero = scanner.nextInt();
+                scanner.nextLine();
+                return numero;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida. Digite apenas números.");
+                scanner.nextLine();
+            }
+        }
+    }
     public int menuCadastro(){
         System.out.println("======= Cassinão do Rodrigão =======");
         System.out.println("1 - Cadastrar Jogador" +
                 "\n2 - Login" +
                 "\n3 - Consultar Jogadores"+
                 "\n0 - Sair");
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
-        return opcao;
+        return lerInteiro("escolha uma opção:");
     }
     public void iniciar(){
         int opcao;
@@ -127,9 +140,7 @@ public class Cassino {
                 "\n5 - Depositar"+
                 "\n6 - Histórico de apostas"+
                 "\n0 - Sair da conta");
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
-        return opcao;
+        return lerInteiro("Escolha uma opção:");
     }
     public void menuJogador(Jogador jogador){
         int opcao;
@@ -179,16 +190,12 @@ public class Cassino {
     }
 
     public int depositar(){
-        System.out.println("Quantos deseja depositar: ");
-        int saldo = scanner.nextInt();
+        int saldo = lerInteiro("Quantos deseja depositar:");
         System.out.println("Saldo depositado: " + saldo);
-        scanner.nextLine();
         return saldo;
     }
     public void jogar(Jogo jogo,Jogador jogador){
-        System.out.println("Informe o valor que quer apostar: ");
-        int valor = scanner.nextInt();
-        scanner.nextLine();
+        int valor = lerInteiro("Informe o valor que quer apostar: ");
         jogo.jogar(valor,jogador);
     }
     public void verHistico(Jogador jogador){
