@@ -28,8 +28,12 @@ public class SistemaLogin {
         return false;
     }
 
+
     public boolean precisaTrocarSenha() {
         return tentativas >= 3;
+    }
+    public void resetarTentativas(){
+        tentativas = 0;
     }
 
     public boolean trocarSenha(Jogador jogador, String novaSenha) {

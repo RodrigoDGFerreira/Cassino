@@ -84,11 +84,26 @@ public class Cassino {
                 boolean autenticar = sistemaLogin.autenticar(j,login,senha);
                 if (autenticar){
                     menuJogador(j);
+                    return;
                 }
-                return;
+                if(sistemaLogin.precisaTrocarSenha()){
+                    redefinirSenha(j);
+                }
+
             }
         }
         System.out.println("Jogador não encontrado");
+    }
+    public void redefinirSenha(Jogador jogador){
+        String novaSenha;
+        boolean senhaAlterada;
+        do{
+            System.out.println("Informe a nova senha: ");
+            novaSenha = scanner.nextLine().trim();
+            senhaAlterada = jogador.alterarSenha(novaSenha);
+        }while(!senhaAlterada);
+        sistemaLogin.resetarTentativas();
+        System.out.println("A senha foi alterada com sucesso");
     }
     public void menuJogador(Jogador jogador){
         int opcao;
@@ -145,9 +160,13 @@ public class Cassino {
 
 
     public void consultarJogadores(){
+        if (jogadores.isEmpty()){
+            System.out.println("Nenhum jogador Cadastrado");
+            return;
+        }
         for (Jogador j: jogadores){
             System.out.println(j);
         }
-
     }
+
 }
