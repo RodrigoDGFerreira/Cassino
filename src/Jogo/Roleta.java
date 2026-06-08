@@ -28,14 +28,17 @@ public class Roleta extends Jogo{
                 System.out.println("O jogador ganhou: " + valor * 10);
                 Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
                 jogador.adicionarSaldo(valor * 10);
+                jogador.adicionarAposta(aposta);
             } else {
                 System.out.println("O jogador ganhou: " + valor * 2);
                 Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
                 jogador.adicionarSaldo(valor * 2);
+                jogador.adicionarAposta(aposta);
             }
         } else {
             System.out.println("O jogador perdeu!!!");
             Aposta aposta = new Aposta(valor,"Derrota",this,jogador);
+            jogador.adicionarAposta(aposta);
         }
     }
     protected int verificar(int numero){

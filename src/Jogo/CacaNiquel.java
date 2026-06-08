@@ -40,10 +40,12 @@ public class CacaNiquel extends Jogo{
                 System.out.println("Parabéns " + jogador.getNome() + " Ganhou!!! " + (valor*5));
                 jogador.adicionarSaldo(valor*5);
                 Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
+                jogador.adicionarAposta(aposta);
         }else{
                 System.out.println(" | " +n1 + " | " + n2 + " | " + n3 + " | ");
                 System.out.println(jogador.getNome() +" perdeu");
                 Aposta aposta = new Aposta(valor,"derrota",this,jogador);
+                jogador.adicionarAposta(aposta);
 
             }
         }
