@@ -191,5 +191,10 @@ public class Cassino {
             System.out.println(j);
         }
     }
+    public String toString() {
+        return "Cassino{" +
+                "jogadores=" + jogadores +
+                '}';
+    }
 
 }
