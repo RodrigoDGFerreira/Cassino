@@ -4,14 +4,23 @@ import Jogo.*;
 import java.util.InputMismatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import Arquivo.ArquivoJogador;
+import Arquivo.ArquivoAposta;
 
 public class Cassino {
     private ArrayList<Jogador> jogadores;
     private SistemaLogin sistemaLogin;
     private Scanner scanner;
+    private ArquivoJogador arquivoJogador;
+    private ArquivoAposta arquivoAposta;
 
     public Cassino(){
-        this.jogadores = new ArrayList<>();
+        this.arquivoJogador = new ArquivoJogador();
+        this.arquivoAposta = new ArquivoAposta();
+
+        this.jogadores = arquivoJogador.carregarJogadores();
+        this.arquivoAposta.carregarApostas(jogadores);
+
         this.sistemaLogin = new SistemaLogin();
         this.scanner = new Scanner(System.in);
     }
@@ -57,6 +66,8 @@ public class Cassino {
                         break;
                     }
                     case 0:{
+                        arquivoJogador.salvarJogador(jogadores);
+                        arquivoAposta.salvarApostas(jogadores);
                         System.out.println("Saindo do Sistema...");
                         break;
                     }
@@ -89,6 +100,7 @@ public class Cassino {
         senha = verificarVazio("Informe sua Senha: ");
         Jogador jogador = new Jogador(nome,login,senha);
         jogadores.add(jogador);
+        arquivoJogador.salvarJogador(jogadores);
         System.out.println("Jogador cadastrado com Sucesso");
     }
     public void login(){
@@ -129,6 +141,7 @@ public class Cassino {
             senhaAlterada = jogador.alterarSenha(novaSenha);
         }while(!senhaAlterada);
         sistemaLogin.resetarTentativas();
+        arquivoJogador.salvarJogador(jogadores);
         System.out.println("A senha foi alterada com sucesso");
     }
 
@@ -170,6 +183,7 @@ public class Cassino {
                 case 5:{
                     int saldo = depositar();
                     jogador.adicionarSaldo(saldo);
+                    arquivoJogador.salvarJogador(jogadores);
                     break;
                 }
                 case 6:{
@@ -177,6 +191,8 @@ public class Cassino {
                     break;
                 }
                 case 0:{
+                    arquivoJogador.salvarJogador(jogadores);
+                    arquivoAposta.salvarApostas(jogadores);
                     System.out.println("Saindo da conta");
                     break;
                 }
@@ -194,9 +210,12 @@ public class Cassino {
         System.out.println("Saldo depositado: " + saldo);
         return saldo;
     }
-    public void jogar(Jogo jogo,Jogador jogador){
+    public void jogar(Jogo jogo, Jogador jogador){
         int valor = lerInteiro("Informe o valor que quer apostar: ");
-        jogo.jogar(valor,jogador);
+        jogo.jogar(valor, jogador);
+
+        arquivoJogador.salvarJogador(jogadores);
+        arquivoAposta.salvarApostas(jogadores);
     }
     public void verHistico(Jogador jogador){
         if (jogador.getHistorico().isEmpty()){

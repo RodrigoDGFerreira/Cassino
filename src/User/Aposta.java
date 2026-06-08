@@ -41,11 +41,10 @@ public class Aposta {
 
     public String toString() {
         return "Aposta{" +
-                "valor=" + valor +
+                "Jogador: " + jogador.getNome() +
+                ", tipoJogo=" + tipoJogo +
                 ", resultado='" + resultado + '\'' +
                 ", data=" + data +
-                ", tipoJogo=" + tipoJogo +
-                ", jogador=" + jogador.getNome() +
                 '}';
     }
 }
