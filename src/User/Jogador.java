@@ -22,7 +22,6 @@ public class Jogador {
         this.saldo = 0;
         this.historico = new ArrayList<>();
         this.ultimasSenhas = new ArrayList<>();
-
         this.ultimasSenhas.add(senha);
     }
 

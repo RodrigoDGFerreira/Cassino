@@ -15,7 +15,7 @@ public class Cassino {
         this.sistemaLogin = new SistemaLogin();
         this.scanner = new Scanner(System.in);
     }
-    public int menu(){
+    public int menuCadastro(){
         System.out.println("======= Cassinão do Rodrigão =======");
         System.out.println("1 - Cadastrar Jogador" +
                 "\n2 - Login" +
@@ -28,7 +28,7 @@ public class Cassino {
     public void iniciar(){
         int opcao;
         do{
-            opcao = menu();
+            opcao = menuCadastro();
             switch (opcao){
                 case 1:{
                     cadastrarJogador();
@@ -74,9 +74,80 @@ public class Cassino {
         System.out.println("Jogador cadastrado com Sucesso");
     }
     public void login(){
-
+        String login,senha;
+        System.out.println("Informe o Login:");
+        login = scanner.nextLine();
+        System.out.println("Informe a Senha");
+        senha = scanner.nextLine();
+        for (Jogador j: jogadores){
+            if (j.getLogin().equals(login)){
+                boolean autenticar = sistemaLogin.autenticar(j,login,senha);
+                if (autenticar){
+                    menuJogador(j);
+                }
+                return;
+            }
+        }
+        System.out.println("Jogador não encontrado");
     }
+    public void menuJogador(Jogador jogador){
+        int opcao;
+
+        do{
+            System.out.println("======= Menu Jogador =======");
+            System.out.println("Jogador: " + jogador.getNome());
+            System.out.println("Saldo: " + jogador.getSaldo());
+            opcao = menuJogo();
+            switch (opcao){
+                case 1:{
+                    jogar(new CacaNiquel(),jogador);
+                    break;
+                }
+                case 2:{
+                    jogar(new BlackJack(),jogador);
+                    break;
+                }
+                case 3:{
+                    jogar(new Roleta(),jogador);
+                    break;
+                }
+                case 4:{
+                    System.out.println(jogador);
+                    break;
+                }
+                case 0:{
+                    System.out.println("Saindo da conta");
+                    break;
+                }
+                default:{
+                    System.out.println("opção invalida");
+                }
+            }
+
+        }while(opcao !=0);
+    }
+    public int menuJogo(){
+        System.out.println("1 - Jogar Caça Niquel" +
+                "\n2 - Jogar Black Jack (21)" +
+                "\n3 - Jogar Roleta"+
+                "\n4 - Ver dados Jogador: "+
+                "\n0 - Sair da conta");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        return opcao;
+    }
+    public void jogar(Jogo jogo,Jogador jogador){
+        System.out.println("Informe o valor que quer apostar: ");
+        int valor = scanner.nextInt();
+        scanner.nextLine();
+        jogo.jogar(valor,jogador);
+    }
+
+
     public void consultarJogadores(){
+        for (Jogador j: jogadores){
+            System.out.println(j);
+        }
 
     }
 }
