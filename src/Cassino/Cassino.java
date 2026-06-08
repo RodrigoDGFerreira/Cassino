@@ -74,24 +74,32 @@ public class Cassino {
         System.out.println("Jogador cadastrado com Sucesso");
     }
     public void login(){
-        String login,senha;
+        String login, senha;
+
         System.out.println("Informe o Login:");
         login = scanner.nextLine();
+
         System.out.println("Informe a Senha");
         senha = scanner.nextLine();
+
         for (Jogador j: jogadores){
             if (j.getLogin().equals(login)){
-                boolean autenticar = sistemaLogin.autenticar(j,login,senha);
+                boolean autenticar = sistemaLogin.autenticar(j, login, senha);
+
                 if (autenticar){
                     menuJogador(j);
                     return;
                 }
-                if(sistemaLogin.precisaTrocarSenha()){
+
+                if (sistemaLogin.precisaTrocarSenha()){
                     redefinirSenha(j);
+                    return;
                 }
 
+                return;
             }
         }
+
         System.out.println("Jogador não encontrado");
     }
     public void redefinirSenha(Jogador jogador){
