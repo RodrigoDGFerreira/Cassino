@@ -27,30 +27,35 @@ public class Cassino {
     }
     public void iniciar(){
         int opcao;
-        do{
-            opcao = menuCadastro();
-            switch (opcao){
-                case 1:{
-                    cadastrarJogador();
-                    break;
+        try {
+            do{
+                opcao = menuCadastro();
+                switch (opcao){
+                    case 1:{
+                        cadastrarJogador();
+                        break;
+                    }
+                    case 2:{
+                        login();
+                        break;
+                    }
+                    case 3:{
+                        consultarJogadores();
+                        break;
+                    }
+                    case 0:{
+                        System.out.println("Saindo do Sistema...");
+                        break;
+                    }
+                    default:{
+                        System.out.println("Opção invalida!");
+                    }
                 }
-                case 2:{
-                    login();
-                    break;
-                }
-                case 3:{
-                    consultarJogadores();
-                    break;
-                }
-                case 0:{
-                    System.out.println("Saindo do Sistema...");
-                    break;
-                }
-                default:{
-                    System.out.println("Opção invalida!");
-                }
-            }
-        }while(opcao!=0);
+            }while(opcao!=0);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
     private String verificarVazio(String mensagem){
         String trem;
