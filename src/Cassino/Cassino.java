@@ -113,6 +113,18 @@ public class Cassino {
         sistemaLogin.resetarTentativas();
         System.out.println("A senha foi alterada com sucesso");
     }
+
+    public int menuJogo(){
+        System.out.println("1 - Jogar Caça Niquel" +
+                "\n2 - Jogar Black Jack (21)" +
+                "\n3 - Jogar Roleta"+
+                "\n4 - Ver dados Jogador: "+
+                "\n5 - Depositar"+
+                "\n0 - Sair da conta");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        return opcao;
+    }
     public void menuJogador(Jogador jogador){
         int opcao;
 
@@ -138,6 +150,11 @@ public class Cassino {
                     System.out.println(jogador);
                     break;
                 }
+                case 5:{
+                    int saldo = depositar();
+                    jogador.setSaldo(saldo);
+
+                }
                 case 0:{
                     System.out.println("Saindo da conta");
                     break;
@@ -149,15 +166,13 @@ public class Cassino {
 
         }while(opcao !=0);
     }
-    public int menuJogo(){
-        System.out.println("1 - Jogar Caça Niquel" +
-                "\n2 - Jogar Black Jack (21)" +
-                "\n3 - Jogar Roleta"+
-                "\n4 - Ver dados Jogador: "+
-                "\n0 - Sair da conta");
-        int opcao = scanner.nextInt();
+
+    public int depositar(){
+        System.out.println("Quantos deseja depositar: ");
+        int saldo = scanner.nextInt();
+        System.out.println("Saldo depositado: " + saldo);
         scanner.nextLine();
-        return opcao;
+        return saldo;
     }
     public void jogar(Jogo jogo,Jogador jogador){
         System.out.println("Informe o valor que quer apostar: ");
