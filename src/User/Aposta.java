@@ -11,6 +11,17 @@ public class Aposta {
     private Jogo tipoJogo;
     private Jogador jogador;
 
+    public Aposta() {
+        this.data = LocalDateTime.now();
+    }
+
+    public Aposta(int valor, String resultado, Jogo tipoJogo, Jogador jogador) {
+        this.valor = valor;
+        this.resultado = resultado;
+        this.tipoJogo = tipoJogo;
+        this.jogador = jogador;
+        this.data = LocalDateTime.now();
+    }
     public int getValor() {return valor;}
     public void setValor(int valor) {this.valor = valor;}
 
@@ -34,7 +45,7 @@ public class Aposta {
                 ", resultado='" + resultado + '\'' +
                 ", data=" + data +
                 ", tipoJogo=" + tipoJogo +
-                ", jogador=" + jogador +
+                ", jogador=" + jogador.getNome() +
                 '}';
     }
 }

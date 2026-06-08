@@ -120,6 +120,7 @@ public class Cassino {
                 "\n3 - Jogar Roleta"+
                 "\n4 - Ver dados Jogador: "+
                 "\n5 - Depositar"+
+                "\n6 - Histirico"+
                 "\n0 - Sair da conta");
         int opcao = scanner.nextInt();
         scanner.nextLine();
@@ -153,7 +154,11 @@ public class Cassino {
                 case 5:{
                     int saldo = depositar();
                     jogador.setSaldo(saldo);
-
+                    break;
+                }
+                case 6:{
+                    verHistico(jogador);
+                    break;
                 }
                 case 0:{
                     System.out.println("Saindo da conta");
@@ -161,6 +166,7 @@ public class Cassino {
                 }
                 default:{
                     System.out.println("opção invalida");
+                    break;
                 }
             }
 
@@ -179,6 +185,15 @@ public class Cassino {
         int valor = scanner.nextInt();
         scanner.nextLine();
         jogo.jogar(valor,jogador);
+    }
+    public void verHistico(Jogador jogador){
+        if (jogador.getHistorico().isEmpty()){
+            System.out.println("O Jogador não apostou!!!");
+            return;
+        }
+        for (Aposta aposta:jogador.getHistorico()){
+            System.out.println(aposta);
+        }
     }
 
 

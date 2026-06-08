@@ -1,7 +1,7 @@
 package Jogo;
 
 import User.Jogador;
-
+import User.Aposta;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -26,13 +26,16 @@ public class Roleta extends Jogo{
         if(opcao == resultado){
             if(resultado == 0){
                 System.out.println("O jogador ganhou: " + valor * 10);
+                Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
                 jogador.adicionarSaldo(valor * 10);
             } else {
                 System.out.println("O jogador ganhou: " + valor * 2);
+                Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
                 jogador.adicionarSaldo(valor * 2);
             }
         } else {
             System.out.println("O jogador perdeu!!!");
+            Aposta aposta = new Aposta(valor,"Derrota",this,jogador);
         }
     }
     protected int verificar(int numero){
@@ -66,7 +69,6 @@ public class Roleta extends Jogo{
     }
     public String toString() {
         return "Roleta{" +
-                "nome='" + nome + '\'' +
-                '}';
+                "nome='" + nome + '}';
     }
 }
