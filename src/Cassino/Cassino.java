@@ -120,7 +120,7 @@ public class Cassino {
                 "\n3 - Jogar Roleta"+
                 "\n4 - Ver dados Jogador: "+
                 "\n5 - Depositar"+
-                "\n6 - Histirico"+
+                "\n6 - Histórico de apostas"+
                 "\n0 - Sair da conta");
         int opcao = scanner.nextInt();
         scanner.nextLine();
@@ -153,7 +153,7 @@ public class Cassino {
                 }
                 case 5:{
                     int saldo = depositar();
-                    jogador.setSaldo(saldo);
+                    jogador.adicionarSaldo(saldo);
                     break;
                 }
                 case 6:{

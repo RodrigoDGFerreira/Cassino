@@ -44,14 +44,13 @@ public class CacaNiquel extends Jogo{
         }else{
                 System.out.println(" | " +n1 + " | " + n2 + " | " + n3 + " | ");
                 System.out.println(jogador.getNome() +" perdeu");
-                Aposta aposta = new Aposta(valor,"derrota",this,jogador);
+                Aposta aposta = new Aposta(valor,"Derrota",this,jogador);
                 jogador.adicionarAposta(aposta);
 
             }
         }
     public String toString() {
-        return "CacaNiquel{" +
-                "nome='" + nome +'}';
+        return nome;
     }
 
 }

@@ -50,6 +50,10 @@ public class Jogador {
     }
 
     public boolean alterarSenha(String novaSenha) {
+        if (novaSenha == null || novaSenha.isBlank()) {
+            System.out.println("A senha não pode ser vazia.");
+            return false;
+        }
         if (senhaUtilizada(novaSenha)) {
             System.out.println("A nova senha não pode ser igual às últimas 3 senhas.");
             return false;

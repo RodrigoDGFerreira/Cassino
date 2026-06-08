@@ -43,14 +43,14 @@ public class BlackJack extends Jogo{
             System.out.println("Dealer estourou! Jogador venceu.\n");
             System.out.println(jogador.getNome() + " ganhou: " + (valor*2));
             jogador.adicionarSaldo(valor * 2);
-            Aposta aposta = new Aposta(valor,"Venceu",this,jogador);
+            Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
             jogador.adicionarAposta(aposta);
         }
         else if (maoJogador > maoDealer) {
             System.out.println("Jogador venceu.\n");
             System.out.println(jogador.getNome() + " ganhou: " + (valor*2));
             jogador.adicionarSaldo(valor * 2);
-            Aposta aposta = new Aposta(valor,"Venceu",this,jogador);
+            Aposta aposta = new Aposta(valor,"Vitoria",this,jogador);
             jogador.adicionarAposta(aposta);
         }
         else if (maoDealer > maoJogador) {
@@ -93,7 +93,6 @@ public class BlackJack extends Jogo{
 
     }
     public String toString() {
-        return "BlackJack{" +
-                "nome='" + nome + '}';
+        return nome;
     }
 }

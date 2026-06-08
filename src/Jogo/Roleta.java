@@ -73,7 +73,6 @@ public class Roleta extends Jogo{
         verificarAposta(opcao, resultado, valor, jogador, numeroSorteado);
     }
     public String toString() {
-        return "Roleta{" +
-                "nome='" + nome + '}';
+        return nome;
     }
 }
