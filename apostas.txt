@@ -1,3 +1,6 @@
 rodrigo;BlackJack;150;Derrota;2026-06-08T19:51:59.210085500
 rodrigo;Caça-Níquel;50;Derrota;2026-06-08T19:57:43.282175800
 rodrigo;Roleta;100;Derrota;2026-06-08T19:58:02.655694300
+leozin;BlackJack;100;Vitoria;2026-06-08T20:20:40.305376500
+leozin;Roleta;100;Derrota;2026-06-08T20:20:58.502650
+leozin;BlackJack;200;Vitoria;2026-06-08T20:26:03.494917800

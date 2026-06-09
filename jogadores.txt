@@ -1,1 +1,2 @@
 Rodrigo Ferreira;rodrigo;1234;150
+Leonardo Ferreira;leozin;123456;1200
